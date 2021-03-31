@@ -23,6 +23,18 @@ php artisan migrate:fresh --seed
 php artisan serve
 ```
 
+## Demo account
+
+```sh
+email: admin_a@mail.com
+password: 123456
+```
+
+```sh
+email: user_a@mail.com
+password: 123456
+```
+
 ## Author
 
 👤 **Labtif Unsur**
