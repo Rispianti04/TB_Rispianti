@@ -12,21 +12,21 @@ class CreateUsersSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'User A',
-                'username' => 'user_a',
-                'email' => 'user_a@mail.com',
-                'password' => Hash::make(123456),
-                'photo' => 'user.jpg',
+                'name' => 'User',
+                'username' => 'isUser',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('123456'),
+                'photo' => 'image.png',
                 'roles_id' => 2
             ],
             [
-                'name' => 'Admin A',
-                'username' => 'admin_a',
-                'email' => 'admin_a@mail.com',
-                'password' => Hash::make(123456),
-                'photo' => 'admin.jpg',
+                'name' => 'Admin',
+                'username' => 'Rispianti',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('123456'),
+                'photo' => 'images.png',
                 'roles_id' => 1
-            ],
+            ]
         ];
 
         foreach ($user as $key => $value) {
