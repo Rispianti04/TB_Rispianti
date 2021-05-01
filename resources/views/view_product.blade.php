@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Product PAGE')
-
+@section('title', 'Products')
 @section('content_header')
 <h1 class="text-center text-bold">BARANG</h1>
 @stop
@@ -102,15 +101,7 @@
       <div class="input-group">
        <input type="text" class="form-control" aria-label="Text input with dropdown button">
        <div class="input-group-append">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
-        <div class="dropdown-menu">
-         <a class="dropdown-item" href="#">Action</a>
-         <a class="dropdown-item" href="#">Another action</a>
-         <a class="dropdown-item" href="#">Something else here</a>
-         <div role="separator" class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-       </div>
+        
       </div>
      </div>
      <div class="form-group">
@@ -119,14 +110,6 @@
       <div class="input-group">
        <input type="text" class="form-control" aria-label="Text input with dropdown button">
        <div class="input-group-append">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
-        <div class="dropdown-menu">
-         <a class="dropdown-item" href="#">Action</a>
-         <a class="dropdown-item" href="#">Another action</a>
-         <a class="dropdown-item" href="#">Something else here</a>
-         <div role="separator" class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#">Separated link</a>
-        </div>
        </div>
       </div>
      </div>
@@ -144,86 +127,6 @@
   </div>
  </div>
 </div>
-
-<div class="modal fade" id="editBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog modal-lg">
-  <div class="modal-content">
-   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Edit Book</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-    </button>
-   </div>
-   <div class="modal-body">
-    <form method="post" action="{{ route('admin.book.update') }}" enctype="multipart/form-data">
-     @csrf
-     @method('PATCH')
-     <div class="row">
-      <div class="col-md-6">
-       <div class="form-group">
-        <label for="edit-judul">Title</label>
-        <input type="text" class="form-control" name="judul" id="edit-judul" required />
-       </div>
-       <div class="form-group">
-        <label for="edit-penulis">Author</label>
-        <input type="text" class="form-control" name="penulis" id="edit-penulis" required />
-       </div>
-       <div class="form-group">
-        <label for="edit-tahun">Year</label>
-        <input min="1" type="number" id="datepicker" class="form-control" name="tahun" id="edit-tahun" required />
-       </div>
-       <div class="form-group">
-        <label for="edit-penerbit">Publisher</label>
-        <input type="text" class="form-control" name="penerbit" id="edit-penerbit" required />
-       </div>
-      </div>
-      <div class="col-md-6">
-       <div class="form-group" id="image-area"></div>
-       <div class="form-group">
-        <label for="edit-cover">Cover</label>
-        <input type="file" class="form-control" name="cover" id="edit-cover" />
-       </div>
-      </div>
-     </div>
-   </div>
-   <div class="modal-footer">
-    <input type="hidden" name="id" id="edit-id" />
-    <input type="hidden" name="old_cover" id="edit-old-cover" />
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-success">Update</button>
-    </form>
-   </div>
-  </div>
- </div>
-</div>
-<div class="modal fade" id="deleteBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog">
-  <div class="modal-content">
-   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Hapus Data Buku</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-    </button>
-   </div>
-   <div class="modal-body">
-    Apakah anda yakin akan menghapus data <strong class="font-italic"></strong>?
-    <form method="post" action="{{ route('admin.book.delete') }}" enctype="multipart/form-data">
-     @csrf
-     @method('DELETE')
-   </div>
-   <div class="modal-footer">
-    <input type="hidden" name="id" id="delete-id" value="" />
-    <input type="hidden" name="old_cover" id="delete-old-cover" />
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-danger">Hapus</button>
-    </form>
-   </div>
-  </div>
- </div>
-</div>
-
-
-
 
 
 @stop

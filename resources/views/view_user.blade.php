@@ -100,7 +100,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
@@ -110,4 +110,18 @@
 
 
 
+@stop
+@section('footer')
+<strong>CopyRight &copy; {{date('Y')}}
+    <a href="#" target="_blank">Rispianti</a>.</strong> All Right reserved
+@stop
+
+@section('css')
+<link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+<script>
+    console.log('Hi!')
+</script>
 @stop

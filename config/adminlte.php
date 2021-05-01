@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Rispi',
+    'title' => 'Management Hoodie*s',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Ipi</b>',
+    'logo' => '<b>Official_Hoodie*s</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -232,19 +232,19 @@ return [
         [
             'text'        => 'Dashboard',
             'url'         => 'admin/home',
-            'icon'        => 'fas fa-tachometer-alt',
+            'icon'        => 'fas fa-home',
             'can' => 'isAdmin',
         ],
         [
             'text'        => 'User',
             'url'         => 'admin/user',
-            'icon'        => 'far fa-fw fa-user',
+            'icon'        => 'fas fa-fw fa-user',
             'can' => 'isAdmin',
         ],
         [
             'text'        => 'Pengelolaan Barang',
             'url'         => 'admin/kelola_barang',
-            'icon'        => 'fas fa-fw fa-box',
+            'icon'        => 'fas fa-fw fa-archive',
             'can' => 'isAdmin',
         ],
         [
@@ -261,7 +261,7 @@ return [
         ],
         [
             'text'    => 'Laporan',
-            'icon'    => 'fas fa-file-archive',
+            'icon'    => 'far fa-file-alt',
             'can' => 'isAdmin',
             'submenu' => [
                 [

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Products;
 use App\Models\Categories;
 use App\Models\Brands;
 
@@ -13,100 +13,44 @@ use App\Models\Brands;
 
 class ProductController extends Controller
 {
-   // public function index(){
-    //     return view('profile');
-    // }
     public function index()
     {
         $user = Auth::user();
-        $users = User::all();
-        return view('view_user', compact('user', 'users'));
+        $barang = Products::all();
+        return view('view_product', compact('user', 'barang'));
     }
-    public function add_user(Request $req)
-    {
-        $users = new User;
 
-        $users->name = $req->get('name');
-        $users->username = $req->get('username');
-        $users->email = $req->get('email');
-        $users->password = $req->get('password');
-        $users->roles_id = $req->get('roles_id');
+    public function add_product(Request $req)
+    {
+
+        $barang = new Products;
+
+        $barang->name = $req->get('name');
+        $barang->brands_id = $req->get('brands_id');
+        $barang->categories_id = $req->get('categories_id');
+        $barang->harga = $req->get('harga');
+        $barang->stok = $req->get('stok');
 
         if ($req->hasFile('photo')) {
             $extension = $req->file('photo')->extension();
 
-            $filename = 'photo_user_' . time() . '.' . $extension;
+            $filename = 'photo_barang_' . time() . '.' . $extension;
 
             $req->file('photo')->storeAs(
-                'public/photo_user',
+                'public/photo_barang',
                 $filename
             );
 
-            $users->photo = $filename;
-        }
+            $barang->photo = $filename;
+            $barang->save();
 
-        $users->save();
-
-        $notification = array(
-            'message' => 'Tambah Data Berhasil',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('admin.user')->with($notification);
-    }
-
-    public function update_user(Request $req)
-    {
-        $users = User::find($req->get('id'));
-
-        $users->name = $req->get('name');
-        $users->username = $req->get('username');
-        $users->email = $req->get('email');
-        $users->password = $req->get('password');
-        $users->roles_id = $req->get('roles_id');
-
-        if ($req->hasFile('photo')) {
-            $extension = $req->file('photo')->extension();
-
-            $filename = 'photo_user_' . time() . '.' . $extension;
-
-            $req->file('photo')->storeAs(
-                'public/photo_user',
-                $filename
+            $notification = array(
+                'message' => 'Data Barang Berhasil Ditambahkan',
+                'alert-type' => 'success'
             );
 
-            Storage::delete('public/photo_user/' . $req->get('old_photo'));
-
-            $users->photo = $filename;
+            
+            return redirect()->route('admin.product')->with($notification);
         }
-
-        $users->save();
-
-        $notification = array(
-            'message' => 'Edit Data Berhasil',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('admin.user')->with($notification);
-    }
-    public function getDataUser($id)
-    {
-        $users = User::find($id);
-
-        return response()->json($users);
-    }
-    public function destroy(Request $req)
-    {
-        $users = User::find($req->id);
-        $users->name = $req->get('name');
-        Storage::delete('public/photo_user/' . $req->get('old_photo'));
-        $users->delete();
-
-        $notification = array(
-            'message' => 'Hapus Data user berhasil',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('admin.user')->with($notification);
     }
 }

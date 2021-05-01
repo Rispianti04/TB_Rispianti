@@ -43,7 +43,6 @@ class CategoriesController extends Controller
 
     public function update_categories(Request $req)
     {
-
         $kategori = Categories::find($req->get('id'));
 
         $kategori->name = $req->get('name');

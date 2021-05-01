@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Brands;
+use PhpOffice\PhpSpreadsheet\Calculation\Brand;
 
 class BrandsController extends Controller
 {
@@ -30,44 +31,45 @@ class BrandsController extends Controller
             'alert-type' => 'success'
         );
 
-
         return redirect()->route('admin.merek')->with($notification);
     }
-    //Ajax Processes
-    public function getDataBrands($id)
-    {
-        $merek = Brands::find($id);
 
-        return response()->json($merek);
-    }
+//proses ajax
+public function getDataBrands($id)
+{
+    $merek = Brands::find($id);
 
-    public function update_brands(Request $req)
-    {
-        $merek = Brands::find($req->get('id'));
+    return response()->jsonp($merek);
+}
 
-        $merek->name = $req->get('name');
-        $merek->description = $req->get('description');
+public function update_Brands(Request $req)
+{
+    $merek = Brands::find($req->get('id'));
 
-        $merek->save();
+    $merek->name = $req->get('name');
+    $merek->description = $req->get('description');
 
-        $notification = array(
-            'message' => 'Data Brand Berhasil di Edit',
-            'alert-type' => 'success'
-        );
+    $merek->save();
 
+    $notification = array(
+        'message' => 'Edit Data merek Sukses',
+        'alert-type' => 'success'
+    );
 
-        return redirect()->route('admin.merek')->with($notification);
-    }
-    public function delete_brands(Request $req)
-    {
-        $merek = Brands::find($req->get('id'));
+    return redirect()->route('admin.merek')->with($notification);
+}
 
-        $merek->delete();
-        $notification = array(
-            'message' => 'Data Brand Berhasil di Hapus',
-            'alert-type' => 'success'
-        );
+public function delete_Brands(Request $req)
+{
+    $merek = Brands::find($req->get('id'));
 
-        return redirect()->route('admin.merek')->with($notification);
-    }
+    $merek->delete();
+
+    $notification = array(
+        'message' => 'Hapus Data merek Sukses',
+        'alert-type' => 'success'
+    );
+    return redirect()->route('admin.merek')->with($notification);
+}
+
 }

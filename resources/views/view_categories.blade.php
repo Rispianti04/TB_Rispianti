@@ -166,14 +166,14 @@
             $('#edit-description').val(description);
             $('#edit-id').val(id);
 
-            // $.ajax({
-            //     type: "get",
-            //     url: baseurl + '/admin/ajaxadmin/dataCategories/' + id,
-            //     dataType: 'json',
-            //     success: function(res) {
-            //         console.log(res);
-            //     },
-            // });
+            $.ajax({
+               type: "get",
+                url: baseurl + '/admin/ajaxadmin/dataCategories/' + id,
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res);
+                 },
+            });
         });
 
         $(document).on('click', '#btn-delete-categories', function() {
@@ -183,5 +183,19 @@
             $('#delete-nama').text(nama);
         });
     });
+</script>
+@stop
+@section('footer')
+<strong>CopyRight &copy; {{date('Y')}}
+    <a href="#" target="_blank">Rispianti</a>.</strong> All Right reserved
+@stop
+
+@section('css')
+<link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+<script>
+    console.log('Hi!')
 </script>
 @stop
